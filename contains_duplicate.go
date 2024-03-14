@@ -30,8 +30,8 @@ Constraints:
 	1 <= nums.length <= 105
 	-109 <= nums[i] <= 109
 */
-func ContainsDuplicate(name string, nums []int) bool {
-	defer Timer(name)()
+func ContainsDuplicate(nums []int) bool {
+	defer Timer("ContainsDuplicate()")()
 
 	slices.Sort(nums)
 

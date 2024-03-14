@@ -10,7 +10,7 @@ import (
 // the returned function. The returned function is intended to
 // be used in a defer statement:
 //
-//   defer timer("sum")()
+//	defer timer("sum")()
 func Timer(name string) func() {
 	start := time.Now()
 	return func() {
@@ -19,6 +19,5 @@ func Timer(name string) func() {
 }
 
 func main() {
-	nums := []int{1,1,1,3,3,4,3,2,4,2}
-	ContainsDuplicate("ContainsDuplicate()", nums)
+	fmt.Printf("For reference, please visit: %s\n", "https://seanprashad.com/leetcode-patterns/")
 }

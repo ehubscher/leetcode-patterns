@@ -6,7 +6,7 @@ import (
 	lp "github.com/ehubscher/leetcode-patterns"
 )
 
-var numstests = []struct {
+var dupNums = []struct {
 	in  []int
 	out bool
 }{
@@ -16,7 +16,7 @@ var numstests = []struct {
 }
 
 func TestContainsDuplicate(t *testing.T) {
-	for _, tt := range numstests {
+	for _, tt := range dupNums {
 		var res bool = lp.ContainsDuplicate(tt.in)
 
 		if res != tt.out {

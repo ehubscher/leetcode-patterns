@@ -31,8 +31,6 @@ Constraints:
 	-109 <= nums[i] <= 109
 */
 func ContainsDuplicate(nums []int) bool {
-	defer Timer("ContainsDuplicate()")()
-
 	slices.Sort(nums)
 
 	var prev int = nums[0]

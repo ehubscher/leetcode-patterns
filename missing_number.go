@@ -1,7 +1,5 @@
 package main
 
-import "slices"
-
 /*
 268. Missing Number (Easy)
 
@@ -37,23 +35,13 @@ Constraints:
 	All the numbers of nums are unique.
 */
 func MissingNumber(nums []int) int {
-	defer Timer("MissingNumber()")()
-
-	if len(nums) == 0 || nums == nil {
-		return -1
-	}
-
-	slices.Sort(nums)
-
-	if len(nums) == 2 && nums[len(nums)-1] == 1 {
-		return 2
-	}
+	missing := 0
+	sum := 0
 
 	for i := 0; i < len(nums); i++ {
-		if i != nums[i] {
-			return i
-		}
+		missing += i + 1
+		sum += nums[i]
 	}
 
-	return -1
+	return missing - sum
 }

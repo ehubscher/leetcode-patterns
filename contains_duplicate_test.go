@@ -1,7 +1,11 @@
 package main_test
 
 import (
+	"fmt"
+	"os"
 	"testing"
+	"text/tabwriter"
+	"time"
 
 	lp "github.com/ehubscher/leetcode-patterns"
 )
@@ -16,11 +20,24 @@ var dupNums = []struct {
 }
 
 func TestContainsDuplicate(t *testing.T) {
+	writer := tabwriter.NewWriter(os.Stdout, 0, 8, 3, '\t', tabwriter.AlignRight)
+
+	fmt.Fprintln(writer, "Function Name\tDuration\tInput\tOutput")
+	
 	for _, tt := range dupNums {
-		var res bool = lp.ContainsDuplicate(tt.in)
+		inCpy := append([]int{}, tt.in...)
+
+		start := time.Now()
+		var res bool = lp.ContainsDuplicate(inCpy)
+		duration := time.Since(start)
+
+		fmt.Fprintf(writer, "%s\t%v\t%v\t%v\n", "ContainsDuplicate()", duration, tt.in, tt.out)
 
 		if res != tt.out {
-			t.Errorf("got: %t, want: %t.", res, tt.out)
+			t.Errorf("got: %t, want: %t.\n", res, tt.out)
 		}
 	}
+
+	fmt.Fprintln(writer, "")
+	writer.Flush()
 }
